@@ -1,6 +1,6 @@
 name: Sync ORCID publications
-
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 8 * * 1"   # every Monday 08:00 UTC
   workflow_dispatch:
