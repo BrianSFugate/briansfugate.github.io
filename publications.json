@@ -1,16 +1,14 @@
 [
-  {
-    "title": "The Blockchain Toolkit",
-    "authors": "R. van Hoek; B. S. Fugate; et al.",
-    "venue": "Book",
-    "year": "2020",
-    "url": ""
-  },
-  {
-    "title": "Operations and Supply Chain Management: Enhancing Competitiveness and Customer Value",
-    "authors": "B. S. Fugate; et al.",
-    "venue": "Textbook",
-    "year": "2019",
-    "url": ""
-  }
+  {"title":"Logistics Performance: Efficiency, Effectiveness, and Differentiation","authors":"B. S. Fugate; J. B. Mentzer; T. P. Stank","venue":"Journal of Business Logistics","year":"2010","url":""},
+  {"title":"Linking Improved Knowledge Management to Operational and Organizational Performance","authors":"B. S. Fugate; et al.","venue":"Journal of Operations Management","year":"2009","url":""},
+  {"title":"A Behavioral Theory of Sustainable Supply Chain Management Decision Making in Non-Exemplar Firms","authors":"J. Kirchoff; A. Omar; B. S. Fugate","venue":"Journal of Supply Chain Management","year":"2016","url":""},
+  {"title":"How Organizations Respond to Information Disclosure","authors":"J. Miller; S. L. Golicic; B. S. Fugate","venue":"Academy of Management Journal","year":"2017","url":""},
+  {"title":"Investigating Green Supply Chain Management Practices and Performance","authors":"P. D. Cousins; B. Lawson; K. J. Petersen; B. S. Fugate","venue":"International Journal of Operations & Production Management","year":"2019","url":""},
+  {"title":"Supply Chain Plasticity During a Global Disruption","authors":"E. Falcone; B. S. Fugate; D. Dobrzykowski","venue":"Journal of Business Logistics","year":"2022","url":""},
+  {"title":"Growing, learning, and connecting: Government customer concentration and firm performance","authors":"E. Falcone; B. S. Fugate; M. A. Waller","venue":"Journal of Business Logistics","year":"2024","url":""},
+  {"title":"Follow-Suit or Free-Ride? CSR Diffusion with Customer-Supplier Closure","authors":"E. Falcone; T. Ying; B. S. Fugate","venue":"Journal of Operations Management","year":"2024","url":""},
+  {"title":"Last-Mile Delivery: Process View and Research Agenda","authors":"N. Masorgo; D. Dobrzykowski; B. S. Fugate","venue":"Journal of Business Logistics","year":"2024","url":""},
+  {"title":"The Blockchain Toolkit: A Supply Chain Manager’s Guide to Understanding and Implementing Blockchain","authors":"R. van Hoek; B. S. Fugate; M. Davletshin; B. D. Williams","venue":"Book/Toolkit","year":"2020","url":""},
+  {"title":"Operations and Supply Chain Management: Enhancing Competitiveness and Customer Value","authors":"B. S. Fugate; et al.","venue":"Textbook","year":"2019","url":""},
+  {"title":"Employee and Customer Information Privacy Concerns in Supply Chain Management","authors":"M. Scott; M. A. Waller; B. S. Fugate","venue":"in Human Privacy in Virtual and Physical Worlds","year":"2024","url":""}
 ]
