@@ -1,8 +1,7 @@
 name: Sync ORCID publications
+
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 8 * * 1"   # every Monday 08:00 UTC
+  # Run only when you click "Run workflow" for now
   workflow_dispatch:
 
 jobs:
@@ -12,31 +11,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Fetch ORCID works
+      - name: Build publications.json from ORCID
+        env:
+          ORCID_ID: ${{ secrets.ORCID_ID }}
         run: |
-          ORCID_ID="${{ secrets.ORCID_ID }}"
+          # If you don't yet have a valid 16-digit ORCID secret set, write an empty list and exit gracefully.
           if [ -z "$ORCID_ID" ]; then
-            echo "No ORCID_ID secret found. Skipping fetch."
+            echo "No ORCID_ID secret found. Writing empty publications.json"
             echo "[]" > publications.json
             exit 0
           fi
-          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" -H "Accept: application/json" > orcid.json || true
-          python3 - <<'PY'
-import json
-from pathlib import Path
-p = Path("orcid.json")
+
+          # Fetch ORCID works
+          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" -H "Accept: application/json" -o orcid.json || true
+
+          # Parse to publications.json
+          python <<'PY'
+import json, pathlib
+p = pathlib.Path('orcid.json')
 pubs = []
 if p.exists() and p.stat().st_size > 0:
     data = json.loads(p.read_text())
-    groups = data.get("group", [])
-    for g in groups:
-        s = (g.get("work-summary") or [{}])[0]
-        title = (((s.get("title") or {}).get("title") or {}).get("value") or "").strip()
-        year = (((s.get("publication-date") or {}).get("year") or {}).get("value") or "")
-        url = ((s.get("url") or {}).get("value") or "")
-        venue = ((s.get("journal-title") or {}).get("value") or "")
-        pubs.append({"title": title, "authors": "", "venue": venue, "year": year, "url": url})
-Path("publications.json").write_text(json.dumps(pubs, indent=2), encoding="utf-8")
+    for g in data.get('group', []):
+        s = (g.get('work-summary') or [{}])[0]
+        title = (((s.get('title') or {}).get('title') or {}).get('value') or '').strip()
+        year = (((s.get('publication-date') or {}).get('year') or {}).get('value') or '')
+        url = ((s.get('url') or {}).get('value') or '')
+        venue = ((s.get('journal-title') or {}).get('value') or '')
+        pubs.append({'title': title, 'authors': '', 'venue': venue, 'year': year, 'url': url})
+pathlib.Path('publications.json').write_text(json.dumps(pubs, indent=2))
 PY
 
       - name: Commit and push changes
