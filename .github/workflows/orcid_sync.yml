@@ -1,0 +1,48 @@
+name: Sync ORCID publications
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # every Monday 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch ORCID works
+        run: |
+          ORCID_ID="${{ secrets.ORCID_ID }}"
+          if [ -z "$ORCID_ID" ]; then
+            echo "No ORCID_ID secret found. Skipping fetch."
+            echo "[]" > publications.json
+            exit 0
+          fi
+          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" -H "Accept: application/json" > orcid.json || true
+          python3 - <<'PY'
+import json
+from pathlib import Path
+p = Path("orcid.json")
+pubs = []
+if p.exists() and p.stat().st_size > 0:
+    data = json.loads(p.read_text())
+    groups = data.get("group", [])
+    for g in groups:
+        s = (g.get("work-summary") or [{}])[0]
+        title = (((s.get("title") or {}).get("title") or {}).get("value") or "").strip()
+        year = (((s.get("publication-date") or {}).get("year") or {}).get("value") or "")
+        url = ((s.get("url") or {}).get("value") or "")
+        venue = ((s.get("journal-title") or {}).get("value") or "")
+        pubs.append({"title": title, "authors": "", "venue": venue, "year": year, "url": url})
+Path("publications.json").write_text(json.dumps(pubs, indent=2), encoding="utf-8")
+PY
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add publications.json || true
+          git diff --quiet || git commit -m "Sync publications from ORCID"
+          git push
