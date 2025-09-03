@@ -1,6 +1,6 @@
 # BrianSFugate.github.io
 
-This is the personal site for Brian S. Fugate.
+This is the personal site for Brian S. Fugate!
 
 ## Publish instructions
 1. Create a public repo named BrianSFugate.github.io
