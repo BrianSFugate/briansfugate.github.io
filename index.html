@@ -1,186 +1,48 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brian S. Fugate | Associate Dean, Chair, Supply Chain Management</title>
-  <meta name="description" content="Academic profile of Brian S. Fugate, Associate Dean of Graduate Programs and Research, Chair of Supply Chain Management, Oren Harris Endowed Chair in Transportation at the University of Arkansas.">
-  <img src="assets/headshot.jpg" alt="Brian S. Fugate" style="width:160px;height:auto;border-radius:12px;">
-  <link rel="canonical" href="https://briansfugate.github.io/">
-  <meta property="og:title" content="Brian S. Fugate">
-  <meta property="og:description" content="Associate Dean of Graduate Programs and Research, Chair of Supply Chain Management, Oren Harris Endowed Chair in Transportation. Fulbright Senior Research Scholar.">
-  <meta property="og:type" content="profile">
-  <meta property="og:url" content="https://briansfugate.github.io/">
-  <meta name="twitter:card" content="summary">
-  <style>
-    :root { --maxw: 980px; --fg:#0f172a; --muted:#475569; --link:#0ea5e9; --bg:#ffffff; --card:#f8fafc; }
-    * { box-sizing: border-box; }
-    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; color: var(--fg); background: var(--bg); line-height:1.6; }
-    header { background:#eef2ff; border-bottom:1px solid #e2e8f0; }
-    .wrap { max-width: var(--maxw); margin:0 auto; padding: 0 16px; }
-    .mast { display:flex; align-items:center; gap:16px; padding:24px 0; }
-    .mast img { width:120px; height:auto; border-radius:12px; border:1px solid #e2e8f0; }
-    .mast h1 { margin:0; font-size: clamp(28px, 4vw, 40px); line-height:1.1; }
-    .mast p { margin:4px 0 0; color: var(--muted); }
-    nav { display:flex; gap:12px; flex-wrap:wrap; padding:0 0 16px; }
-    nav a { text-decoration:none; color: var(--link); padding:6px 10px; border-radius:10px; }
-    nav a:hover { background:#e0f2fe; }
-    main { padding: 28px 0 64px; }
-    section { margin-top: 28px; padding: 20px; background: var(--card); border:1px solid #e2e8f0; border-radius:16px; }
-    h2 { margin-top:0; }
-    ul { margin: 0.5em 0 0 1.2em; }
-    footer { padding:24px 16px; border-top:1px solid #e2e8f0; color:var(--muted); }
-    .pill { display:inline-block; font-size:12px; padding:2px 8px; border:1px solid #cbd5e1; border-radius:999px; margin-right:6px; background:#fff; }
-    .small { font-size: 14px; }
-  </style>
+name: Sync ORCID publications
 
-  <!-- JSON-LD Person schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Brian S. Fugate",
-    "jobTitle": "Associate Dean of Graduate Programs and Research; Chair, Department of Supply Chain Management",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Sam M. Walton College of Business, University of Arkansas"
-    },
-    "url": "https://briansfugate.github.io/",
-    "worksFor": { "@type":"CollegeOrUniversity", "name":"University of Arkansas" },
-    "alumniOf": [{ "@type":"CollegeOrUniversity", "name":"University of Tennessee" }],
-    "sameAs": [
-      "https://www.linkedin.com/in/briansfugate",
-      "https://scholar.google.com/",
-      "https://orcid.org/0000-0000-0000-0000",
-      "https://walton.uark.edu/"
-    ]
-  }
-  </script>
-</head>
-<body>
-  <header>
-    <div class="wrap">
-      <div class="mast">
-        <img src="assets/headshot.jpg" alt="Brian S. Fugate">
-        <div>
-          <h1>Brian S. Fugate, Ph.D.</h1>
-          <p>Associate Dean of Graduate Programs and Research. Chair, J.B. Hunt Department of Supply Chain Management. Oren Harris Endowed Chair in Transportation.</p>
-        </div>
-      </div>
-      <nav aria-label="Primary">
-        <a href="#bio">Bio</a>
-        <a href="#roles">Roles</a>
-        <a href="#publications">Publications</a>
-        <a href="#awards">Awards</a>
-        <a href="#service">Editorial & Service</a>
-        <a href="#teaching">Teaching</a>
-        <a href="#industry">Industry Experience</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+on:
+  workflow_dispatch:   # run only when you click the button
 
-  <main class="wrap">
-    <section id="bio">
-      <h2>Bio</h2>
-      <p>Dr. Brian S. Fugate serves as Associate Dean of Graduate Programs and Research in the Sam M. Walton College of Business at the University of Arkansas, where he leads college-wide initiatives that elevate graduate education, strengthen research infrastructure, and amplify faculty impact. He also chairs the J.B. Hunt Department of Supply Chain Management and holds the Oren Harris Endowed Chair in Transportation. Dr. Fugate previously served as a Fulbright Senior Research Scholar at the MIT-Zaragoza Logistics Center in Spain and as Co-Editor-in-Chief of the <em>Journal of Supply Chain Management</em>.</p>
-      <p>His research examines the strategic integration of demand and supply, knowledge flows, and sustainability across global supply networks, with emphasis on inter-organizational collaboration and enabling technologies. His work appears in <em>Journal of Supply Chain Management</em>, <em>Journal of Operations Management</em>, <em>Decision Sciences</em>, <em>Academy of Management Journal</em>, and related outlets. He co-authored <em>The Blockchain Toolkit: A Supply Chain Manager’s Guide to Understanding and Implementing Blockchain</em> and <em>Operations and Supply Chain Management: Enhancing Competitiveness and Customer Value</em>.</p>
-      <p>An award-winning educator, Dr. Fugate has received AACSB’s “Innovations That Inspire” recognition and multiple nominations for the Panhellenic Council’s University Professor of the Year. He teaches undergraduate, graduate, executive, and professional development courses in on-campus and online formats and advances active learning through simulations, live industry projects, and software-supported pedagogy.</p>
-    </section>
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    <section id="roles">
-      <h2>Current Roles</h2>
-      <ul>
-        <li>Associate Dean of Graduate Programs and Research, Sam M. Walton College of Business</li>
-        <li>Chair, J.B. Hunt Department of Supply Chain Management</li>
-        <li>Oren Harris Endowed Chair in Transportation</li>
-        <li>Professor of Supply Chain Management</li>
-      </ul>
-    </section>
+      - name: Build publications.json from ORCID
+        env:
+          ORCID_ID: ${{ secrets.ORCID_ID }}
+        run: |
+          if [ -z "$ORCID_ID" ]; then
+            echo "No ORCID_ID secret set. Writing empty list."
+            echo "[]" > publications.json
+            exit 0
+          fi
 
-    <section id="publications">
-      <h2>Selected Publications & Books</h2>
-      <p class="small">This list loads from <code>publications.json</code>. The file can auto-update weekly from your ORCID once you add the ORCID secret.</p>
-      <div id="pub-list" aria-live="polite">Loading…</div>
-    </section>
+          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" \
+            -H "Accept: application/json" -o orcid.json || true
 
-    <section id="awards">
-      <h2>Awards & Distinctions</h2>
-      <ul>
-        <li>Top 25 for Supply Chain Research Leadership (2001–2015)</li>
-        <li>LaLonde Best Paper Award, <em>Journal of Business Logistics</em> (2021, 2023)</li>
-        <li>CSCMP E. Grosvenor Plowman Award (2017)</li>
-        <li>AACSB “Innovations That Inspire” Award</li>
-      </ul>
-    </section>
+          python <<'PY'
+import json, pathlib
+p = pathlib.Path('orcid.json')
+pubs = []
+if p.exists() and p.stat().st_size > 0:
+    data = json.loads(p.read_text())
+    for g in data.get('group', []):
+        s = (g.get('work-summary') or [{}])[0]
+        title = (((s.get('title') or {}).get('title') or {}).get('value') or '').strip()
+        year = (((s.get('publication-date') or {}).get('year') or {}).get('value') or '')
+        url = ((s.get('url') or {}).get('value') or '')
+        venue = ((s.get('journal-title') or {}).get('value') or '')
+        pubs.append({'title': title, 'authors': '', 'venue': venue, 'year': year, 'url': url})
+pathlib.Path('publications.json').write_text(json.dumps(pubs, indent=2))
+PY
 
-    <section id="service">
-      <h2>Editorial & Professional Service</h2>
-      <ul>
-        <li>Co-Editor-in-Chief, <em>Journal of Supply Chain Management</em> (2016–2020)</li>
-        <li>Associate Editor, <em>Journal of Operations Management</em></li>
-        <li>Associate Editor, <em>Journal of Business Logistics</em></li>
-        <li>Editorial Review Board, <em>Journal of Supply Chain Management</em></li>
-        <li>Best Reviewer Awards (four times across leading journals)</li>
-      </ul>
-    </section>
-
-    <section id="teaching">
-      <h2>Teaching & Pedagogy</h2>
-      <ul>
-        <li>Undergraduate, graduate, executive, and professional development courses</li>
-        <li>Active learning design using simulations, live projects, and software tools</li>
-        <li>Industry engagement through the Supply Chain Management Research Center</li>
-      </ul>
-    </section>
-
-    <section id="industry">
-      <h2>Prior Industry Experience</h2>
-      <ul>
-        <li>Delta Air Lines — Industrial Engineering and Supplier Contracts</li>
-        <li>Honeywell — Industrial Engineer</li>
-        <li>John Deere — Worldwide Logistics and Supplier Development</li>
-        <li>Additional work with leading automotive and consumer packaged goods firms</li>
-        <li>Consulting in S&OP, logistics, lean management, forecasting, and sustainability</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:bfugate@walton.uark.edu">bfugate@walton.uark.edu</a><br>
-         LinkedIn: <a href="https://www.linkedin.com/in/briansfugate">linkedin.com/in/briansfugate</a>
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      <p>© <span id="year"></span> Brian S. Fugate.</p>
-    </div>
-  </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    async function loadPubs() {
-      try {
-        const res = await fetch("publications.json", { cache: "no-store" });
-        const data = await res.json();
-        const el = document.getElementById("pub-list");
-        if (!Array.isArray(data) || data.length === 0) { el.textContent = "No publications listed yet."; return; }
-        const items = data.map(p => {
-          const title = p.title || "Untitled";
-          const venue = p.venue ? ` <span class="pill">${p.venue}</span>` : "";
-          const year = p.year ? ` <span class="pill">${p.year}</span>` : "";
-          const link = p.url ? `<a href="${p.url}">${title}</a>` : title;
-          const authors = p.authors ? `<div class="small">${p.authors}</div>` : "";
-          return `<li>${link}${venue}${year}${authors}</li>`;
-        });
-        el.innerHTML = `<ol>${items.join("")}</ol>`;
-      } catch (e) {
-        document.getElementById("pub-list").textContent = "Could not load publications.";
-      }
-    }
-    loadPubs();
-  </script>
-</body>
-</html>
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add publications.json || true
+          git diff --quiet || git commit -m "Sync publications from ORCID"
+          git push
