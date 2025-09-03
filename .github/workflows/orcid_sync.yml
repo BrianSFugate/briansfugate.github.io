@@ -1,8 +1,7 @@
 name: Sync ORCID publications
 
 on:
-  # Manual run button in Actions
-  workflow_dispatch:
+  workflow_dispatch:   # shows the "Run workflow" button
 
 jobs:
   build:
@@ -15,17 +14,15 @@ jobs:
         env:
           ORCID_ID: ${{ secrets.ORCID_ID }}
         run: |
-          # If no ORCID secret yet, write an empty list and exit cleanly
           if [ -z "$ORCID_ID" ]; then
-            echo "No ORCID_ID secret found. Writing empty publications.json"
+            echo "No ORCID_ID secret set. Writing empty list."
             echo "[]" > publications.json
             exit 0
           fi
 
-          # Fetch public works from ORCID
-          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" -H "Accept: application/json" -o orcid.json || true
+          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" \
+            -H "Accept: application/json" -o orcid.json || true
 
-          # Convert to publications.json
           python <<'PY'
 import json, pathlib
 p = pathlib.Path('orcid.json')
