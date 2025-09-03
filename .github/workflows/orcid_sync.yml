@@ -1,11 +1,13 @@
 name: Sync ORCID publications
 
 on:
-  workflow_dispatch:   # <-- this line is what makes "Run workflow" appear
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
