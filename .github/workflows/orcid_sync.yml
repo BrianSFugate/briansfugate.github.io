@@ -1,7 +1,7 @@
 name: Sync ORCID publications
 
 on:
-  workflow_dispatch:   # shows the "Run workflow" button
+  workflow_dispatch:   # this makes the green "Run workflow" button show up
 
 jobs:
   build:
@@ -15,7 +15,6 @@ jobs:
           ORCID_ID: ${{ secrets.ORCID_ID }}
         run: |
           if [ -z "$ORCID_ID" ]; then
-            echo "No ORCID_ID secret set. Writing empty list."
             echo "[]" > publications.json
             exit 0
           fi
