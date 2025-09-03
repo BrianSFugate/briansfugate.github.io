@@ -1,8 +1,6 @@
 name: Sync ORCID publications
-
 on:
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,7 +9,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Build publications.json from ORCID
         env:
           ORCID_ID: ${{ secrets.ORCID_ID }}
@@ -20,10 +17,7 @@ jobs:
             echo "[]" > publications.json
             exit 0
           fi
-
-          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" \
-            -H "Accept: application/json" -o orcid.json || true
-
+          curl -s "https://pub.orcid.org/v3.0/$ORCID_ID/works" -H "Accept: application/json" -o orcid.json || true
           python <<'PY'
 import json, pathlib
 p = pathlib.Path('orcid.json')
@@ -39,7 +33,6 @@ if p.exists() and p.stat().st_size > 0:
         pubs.append({'title': title, 'authors': '', 'venue': venue, 'year': year, 'url': url})
 pathlib.Path('publications.json').write_text(json.dumps(pubs, indent=2))
 PY
-
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
